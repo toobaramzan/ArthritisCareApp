@@ -1,0 +1,149 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="~/Scripts/Graphs/Chart.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/mywebapp.ui.GenderReport.js")"></script>
+
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            MyWebApp.UI.GenderReport.readyMain();
+        });
+    </script>
+}
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+
+                    Reports
+                </li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="space-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+
+                &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-bar-chart" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Reports</b></h4>
+                <br><br>
+                <div class="row center">
+                    <h5 id="formTextDco">Male per City Report</h5>
+                </div>
+                <div class="space-4"></div>
+                <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="center">
+                            <div class="col-sm-4">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" style="width:100%">
+                                        <tbody id="patBody"></tbody>
+
+                                    </table>
+                                    <table class="table table-hover" style="width:100%">
+                                        <tbody id="patMBody"></tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row center">
+                        <canvas id="myMcanvas" width="400" height="400"></canvas>
+
+                    </div>
+                    <br><br><br>
+                    <div class="row center">
+                        <h5 id="formTextDco">Female per City Report</h5>
+                    </div>
+                    <div class="space-10"></div>
+                    <div class="row center">
+
+                        <canvas id="myFcanvas" width="400" height="400"></canvas>
+                        <!--<h5 id="formTextDco">Gender Wise Report</h5>-->
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-sm-2">
+
+                        </div>
+
+                        <div class="col-sm-10">
+
+
+                        </div>
+                        <div class="space-30"></div>
+                    </div>
+                    <!-- /.col -->
+                    <!-- /.row -->
+
+                </div>
+            </div>
+            <!-- PAGE CONTENT ENDS -->
+
+        </div><!-- /.page-content -->
+        <!-- /.main-content -->
+        <script id="patListDisplaytemplate" type="text/x-handlebars-template">
+
+            {{#each chartList}}
+            <tr>
+                <td hidden>
+
+                    {{city}}
+
+                </td>
+               
+                <td hidden>
+
+                    {{fCount}}
+
+                </td>
+                
+            </tr>
+            {{/each}}
+        </script>
+
+
+        <script id="patMListDisplaytemplate" type="text/x-handlebars-template">
+
+            {{#each chartList}}
+            <tr >
+                <td hidden>
+
+                    {{city}}
+
+                </td>
+
+                <td hidden>
+
+                    {{mCount}}
+
+                </td>
+            </tr>
+            {{/each}}
+        </script>

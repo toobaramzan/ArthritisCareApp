@@ -1,0 +1,161 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/AdminScripts/mywebapp.ui.addDoctor.js")"></script>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+           MyWebApp.UI.addDoctor.readyMain();
+        });
+    </script>
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a class="active" href="#">Home</a>
+                </li>
+
+                <li>
+
+                    Add Doctor
+                </li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+        <div class="page-content">
+            <div class="space-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+
+                &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-md" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Add New Doctor</b></h4>
+                <br><br>
+                <div class="space-20"></div>
+                <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label>First Name  </label>
+                        <div class="space-4"></div>
+                        <input type="text" id="fname1"><br><br>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label>Last Name </label>
+                        <div class="space-4"></div>
+                        <input type="text" id="lname1"><br><br>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label>User Name </label>
+                        <div class="space-4"></div>
+                        <input type="text" id="uname" /><br>
+                        <label id="userError"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Password  </label>
+                        <div class="space-4"></div>
+                        <input type="text" id="pass1"><br><br>
+                    </div>
+                </div>
+
+                <div class="space-4"></div>
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-8">
+                        <label id="formTextDco">Category &nbsp;  &nbsp; &nbsp;  &nbsp; </label>
+                        <select id="cat">
+                            <option id="formTextDco" value="admin">Admin</option>
+                            <option id="formTextDco" value="doctor">Doctor</option>
+
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="qualificationDiv">
+                            <label>Qualification  </label>
+                            <div id="quaDiv">
+                                <div class="space-4"></div>
+                                <input type="text"><br>
+                                <div class="space-4"></div>
+                            </div>
+                        </div><div class="space-4"></div>
+                        <input id="add1" type="submit" value="Add another" style="color:black;" />
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label>Designation  </label>
+                        <div id="desDiv">
+
+                            <div class="space-4"></div>
+                            <input type="text">
+                            <div class="space-4"></div>
+                        </div><div class="space-4"></div>
+                        <input id="add2" type="submit" value="Add another" style="color:black;" />
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-8">
+
+                        <input id="submitButton" class="submitButton" type="submit" value="Add" style="color:white;" />
+                    </div>
+                </div>
+                <br><br><br><br>
+            </div>
+
+
+        </div>
+
+        <!-- /.col -->
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->
+
+<div class="modal fade" id="addDocModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:red">Warning</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:16px;" id="modelPara">Please fill First Name, Username and password!</p>
+            </div>
+
+        </div>
+    </div>
+</div>

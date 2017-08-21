@@ -1,0 +1,87 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/ModifyForm/mywebapp.ui.ModifyMeds.js")"></script>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            MyWebApp.UI.ModifyMeds.readyMain();
+        });
+    </script>
+}
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    Update Visit Medication
+                </li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="space-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+                <div class="row">
+                    &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-hospital-o" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Visit Medication</b></h4>
+                    <div class="space-10"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="table-responsive">
+                                <table class="table-hover" style="width:100%">
+
+                                    <tbody id="rosBody"></tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+
+                            <div>
+
+                                <p>To update the Visit Meds Values</p>
+                                <div>
+                                    <input type="text" id="vMedId" hidden value="@ViewBag.Id" readonly />
+                                </div><br>
+                                Med Name :<input type="text" id="toBeUpdatedMedName" value="@ViewBag.Name" readonly />&nbsp;&nbsp;&nbsp;
+                                <input type="text" placeholder="New Name" id="newName" />&nbsp;&nbsp;&nbsp;
+                                <div></div><br>
+                                <input type="submit" value="Update Visit Med" id="updateVMed" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <br><br><br><br>
+            </div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

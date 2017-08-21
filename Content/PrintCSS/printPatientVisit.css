@@ -1,0 +1,207 @@
+﻿body{
+    margin:0;
+}
+
+@page{
+        margin:0;
+        size: A4;
+    }
+
+@media print {
+    html, body {
+                  margin:0;
+                  padding:0;
+                /*overflow:-moz-scrollbars-vertical;
+           overflow-y: scroll;
+           overflow-x: hidden;*/
+                /*width:9.5in;
+                height:11in;*/
+              }
+    @page{
+        size:A4;
+    }
+    #side{
+        margin-left:0;
+        padding-left:0;
+
+    }
+   
+}
+
+#side
+{
+    width:36%;
+      height:100%;
+      background-color:darkseagreen;
+      position:absolute;
+      float:left;
+
+}
+#side p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+#docInfo{padding-top:12%;padding-left:6%;}
+ #docInfo h3{font-size:17px;}
+ #docInfo p{font-size:13px;}
+ #docInfo h4{font-size:14px;}
+#docInfo h5{font-size:13px;}#docInfo h6{font-size:13px;}
+#skel{
+    width:60%;
+    height:30%;
+    margin-left:15%;
+}
+.right{
+    float:right;
+}
+#logo{
+    width:55%;
+    height:15%;
+    margin-left:11%;
+}
+#orgName{
+  color:darkseagreen;
+  text-shadow:1px 1px 1px #00334d;
+  font-weight:bold;font-family:Georgia;font-size:16px;
+
+  padding-top:15%;
+}
+#assessBox{
+    width:100%;
+    height:19%;
+     
+}     
+#assessBox p{
+font-size:12px;
+}   
+#assessBoxHis p{
+font-size:11px;
+}
+#assessBoxHis{
+    width:100%;
+    height:11%;
+    padding-right:2%;
+   
+}
+#middleDiv{
+    padding-top:2%;
+    padding-left:38%;
+    width:58%;
+    
+} 
+#middleDiv p{
+    padding:0;margin:0;
+    
+}
+#unbold
+{
+    font-weight:normal;
+     text-transform:capitalize;
+}
+.rightdiv{
+    float:right;
+    margin-right:10%;
+     width:42%;
+}
+#leftDiv
+{
+    width:50%;
+}
+#divBottom
+{
+    padding-left:38%;
+    float:left;
+
+}
+.btmDivs{
+    width:19%;
+    padding-right:1%;
+    display:inline-block;
+}
+#divBtmRight{
+    float:right;
+}
+.btmDivs h5{
+    font-size:14px;
+    margin:0;
+    padding:0;
+}
+.btmDivs p{
+    margin:0;
+    padding:0;
+    font-size:12px;
+}
+#alignCenter{
+   padding-left:55%;
+}
+hr{
+    border-width: 1px;
+    color:black;
+}
+.spacer2 { height: 2px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer4 { height: 4px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer8 { height: 8px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer6 { height: 6px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer10 { height: 10px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer15 { height: 15px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer20 { height: 20px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer25 { height: 25px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer30 { height: 30px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer35 { height: 35px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer40 { height: 40px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer45 { height: 45px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer50 { height: 50px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer100 { height: 100px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+.spacer200 { height: 200px; width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block; }
+#probList{
+    width:55%;
+    min-height:13%;
+}
+#probList2{
+    width:55%;
+    min-height:8%;
+}
+#labs{
+    width:100%;
+    min-height:18%;
+   
+}
+#meds{
+    width:80%;
+      min-height:18%;
+}
+#cc{
+    min-height:18%;
+    width:80%;
+}
+#ros{
+     width:100%;
+      min-height:20%;
+}
+#premeds{
+    width:100%;
+    min-height:14%;
+}
+#pmh{
+    width:100%;
+    min-height:20%;
+}
+#age{
+    font-weight:bold;
+    font-size:16px;
+}
+#rDiv{
+    width:50%;
+}
+#assessBox p:first-letter{
+     text-transform:capitalize;
+}
+#assessBoxHis p:first-letter{
+     text-transform:capitalize;
+}
+#cc p:first-letter{
+     text-transform:capitalize;
+}
+.rightdiv p:first-letter{
+     text-transform:capitalize;
+}
+#probList p:first-letter{
+     text-transform:capitalize;
+}

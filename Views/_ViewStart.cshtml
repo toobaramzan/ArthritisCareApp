@@ -1,0 +1,25 @@
+﻿@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    string layout = "";
+    if (controller == "Admin")
+    {
+        layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (controller=="Login")
+    {
+        layout = "~/Views/Shared/_LoginLayout.cshtml";
+    }
+    else if (controller == "Home")
+    {
+        layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    else if (controller == "HistoryData")
+    {
+        layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    else 
+    {
+        layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    Layout = layout;
+}

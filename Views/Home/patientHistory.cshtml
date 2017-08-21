@@ -1,0 +1,235 @@
+﻿
+@model PUCIT.AIMRL.PRM.Entities.customEntities.PatAllHistory
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="~/Home/index">Home</a>
+							</li>
+							<li>
+								
+								<a href="~/Home/search">search</a>
+							</li>
+							<li>	
+								Patient History
+							</li>
+							
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="sea">
+							<form class="form-search">
+									<input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+									<input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;"/>
+								
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">					
+							<div class="space-10"></div>
+						<!-- /.page-header -->
+                        <div class="container" id="homeBg">
+                            <div class="space-10"></div>
+                            &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-hospital-o" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Patient History</b></h4>
+                            <div class="space-14"></div>
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <ul class="nav nav-tabs  tab-size-bigger">
+                                        <li class="active">
+                                            <a data-toggle="tab" href="#basic">
+                                                <span class="bigger-110">Basic Info</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#lab">
+                                                <span class="bigger-110">Labs/Meds</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#ros">
+                                                <span class="bigger-110">ROS/PMH/Disease</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#test">
+                                                <span class="bigger-110">Disease Test </span>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div class="tab-content" style="border:1px dotted skyblue; border-radius: 0px 0px 13px 13px" >
+                                        <div id="basic" class="tab-pane fade in active">
+                                            <div id="textFormat" class="row"  >
+                                                <div class="col-sm-2"></div>
+                                                <div  class="col-sm-4">
+                                                    <h4>
+                                                        Name:
+                                                        <label > @Model.temp.firstName @Model.temp.lastName</label>
+                                                    </h4>
+                                                    <h4>Gender: <label> @Model.temp.gender</label></h4>
+                                                    <h4>Age: <label> @Model.temp.age</label></h4>
+                                                    <h4>Last F/U: <label>@Model.temp.lastfu</label></h4>
+                                                    <div class="space-18"></div>
+                                                    <h4><u>P/h</u></h4>
+                                                     <p>@Model.temp.ph</p>
+                                                    <h4><u>General</u></h4>
+                                                    <p>@Model.temp.general</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    
+                                                    <h4>City: <label> @Model.temp.city</label></h4>
+                                                    <h4>Phone number: <label> @Model.temp.phoneNumber</label></h4>
+                                                  
+                                                    <h4>Weight: <label> @Model.temp.weight</label></h4>
+                                                    <h4>BP: <label> @Model.temp.systolicBp / @Model.temp.diastolicBp</label></h4><br />
+                                                    
+                                                    <h4><u>F/h</u></h4>
+                                                    <p>@Model.temp.fh</p>
+                                                    <h4><u>Systemic</u></h4>
+                                                    <p>@Model.temp.systemic</p>
+                                                   
+                                                 </div>
+                                               
+                                            </div>
+                                            <div class="row" id="textFormat">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-8">
+                                                    <h4><u>CC/Probelm List</u></h4>
+                                                    <p>@Model.temp.problemList</p>
+                                                </div>
+                                            </div>
+                                            <div class="row" id="textFormat">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-8">
+                                                    <h4><u>Assessment Plan</u></h4>
+                                                    <p>@Model.temp.treatmentPlan</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="lab" class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-sm-2"></div>
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>Labs</u></h4>
+                                                    @if (Model.patLabInfo!=null)
+                                                    {
+                                                        foreach (var l in Model.patLabInfo)
+                                                        {
+                                                    <p>@l.labName  @l.labData  @l.labResult</p>
+                                                        }
+                                                    }
+                                                </div>
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>Meds</u></h4>
+
+                                                    @if (Model.patMedInfo!=null)
+                                                    {
+                                                        foreach (var m in Model.patMedInfo)
+                                                        {
+                                                    <p>@m.medName  @m.medDose  @m.medType</p>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div></div>
+
+                                        <div id="test" class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-sm-3"></div>
+                                                <div id="textFormat" class="col-sm-2">
+                                                    <h4><u>Test Name</u></h4><div class="space-8"></div>
+                                                    <label><u>SDAI Test</u></label><br />
+                                                    <label><u>Das-28 Test</u></label><br />
+                                                    <label><u>DAPSA Test</u></label><br />
+                                                    <label><u>BASDAI Test</u></label><br />
+                                                    <label><u>SLE Test</u></label><br />
+                                                    <label><u>ASDAS Test</u></label><br />
+                                                    <label><u>CDAI Test</u></label><br />
+                                                </div>
+                                             
+                                                <div id="textFormat" class="col-sm-2">
+                                                    <h4><u>Result</u></h4><div class="space-8"></div>
+                                                    <label> @Model.testSdai.resValue</label><br />
+                                                    <label> @Model.testdas28.resValue</label><br />
+                                                    <label> @Model.testDapsa.resValue</label><br />
+                                                    <label> @Model.testBasdai.resValue</label><br />
+                                                    <label> @Model.testSle.resValue</label><br />
+                                                    <label> @Model.testAsdas.resValue</label><br />
+                                                    <label> @Model.testCdai.resValue</label><br />
+                                                </div>
+
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>Indicator</u></h4><div class="space-8"></div>
+                                                    <label> @Model.testSdai.resIndicator</label><br />
+                                                    <label> @Model.testdas28.resIndicator</label><br />
+                                                    <label> @Model.testDapsa.resIndicator</label><br />
+                                                    <label> @Model.testBasdai.resIndicator</label><br />
+                                                    <label> @Model.testSle.resIndicator</label><br />
+                                                    <label> @Model.testAsdas.resIndicator</label><br />
+                                                    <label> @Model.testCdai.resIndicator</label><br />
+                                                </div>
+                                                </div>
+                                          
+                                        </div>
+
+                                        <div id="ros" class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-sm-2"></div>
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>Joint Count</u></h4>
+                                                    <h4>TJC: <label> @Model.patJointInfo.tjc</label></h4>
+                                                    <h4>SJC: <label> @Model.patJointInfo.sjc</label></h4>
+                                                    <h4>VAS: <label> @Model.patJointInfo.uac</label></h4>
+                                                    <h4>DAS28: <label> @Model.patJointInfo.das28</label></h4>
+
+                                                </div>
+
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>Disease</u></h4>
+                                                    @if (Model.patDiseaseInfo != null)
+                                                    {
+                                                        foreach (var d in Model.patDiseaseInfo)
+                                                        {
+                                                            <p> @d.pmh</p>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2"></div>
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>ROS</u></h4>
+
+                                                    @if (Model.patRosInfo != null)
+                                                    {
+                                                        foreach (var d in Model.patRosInfo)
+                                                        {
+                                                            <p> @d.pmh</p>
+                                                        }
+                                                    }
+                                                </div>
+                                                <div id="textFormat" class="col-sm-4">
+                                                    <h4><u>PMH</u></h4>
+                                                    @if (Model.patPmhInfo != null)
+                                                    {
+                                                        foreach (var d in Model.patPmhInfo)
+                                                        {
+                                                            <p> @d.pmh</p>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div>
+
+
+                                    </div><!-- /.col -->
+                                </div><!-- /.row -->
+                            </div><!-- /.page-content -->
+     

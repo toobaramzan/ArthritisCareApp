@@ -1,0 +1,505 @@
+﻿@model PUCIT.AIMRL.PRM.Entities.customEntities.editProfileObj
+
+<body class="no-skin">
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        Profile
+                    </li>
+
+                </ul><!-- /.breadcrumb -->
+                <div class="nav-search" id="sea">
+                    <form class="form-search">
+                        <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                        <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                    </form>
+                </div>
+                <!-- /.nav-search -->
+            </div>
+            <br><br>
+            @*starting here*@
+            <div class="page-content">
+                <div class="space-10"></div>
+                <!-- /.page-header -->
+                <div class="container">
+
+                    @*&nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-plus" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Add New Patient</b></h4>*@
+                    <br><br>
+                    <ul class="nav nav-tabs  tab-size-bigger">
+                        <li class="active">
+                            <a data-toggle="tab" href="#basic">
+                                <span class="bigger-110">Basic Info</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#designation">
+                                <span class="bigger-110">Designation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#qualification">
+                                <span class="bigger-110">Qualification</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="space-20"></div>
+                        <div id="basic" class="tab-pane fade in active">
+                            <div id="user-profile-1" class="user-profile row">
+                                <div class="col-xs-12 col-sm-3 center">
+                                    <div class="space-6"></div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-8 ">
+                                    <div class="space-8"></div>
+                                    <div class="profile-user-info profile-user-info-striped">
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> First Name </div>
+
+                                            <div class="profile-info-value">
+
+                                                <input type="text" id="fname" value="@Model.firstName" readonly />
+                                                <button id="f-button" type="button" style="background:transparent;border:0px" class="fa fa-pencil-square-o pull-right" aria-hidden="true"></button>
+                                            </div>
+
+                                        </div>
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name">Last Name</div>
+
+                                            <div class="profile-info-value">
+
+                                                <input type="text" id="lname" value="@Model.lastName" readonly />
+                                                <button id="f2-button" type="button" style="background:transparent;border:0px" class="fa fa-pencil-square-o pull-right" aria-hidden="true"></button>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> Password </div>
+                                            <div class="profile-info-value">
+
+                                                <input type="password" id="pass" value="@Model.pass" readonly />
+                                                <button id="f3-button" type="button" style="background:transparent;border:0px" class="fa fa-pencil-square-o pull-right" aria-hidden="true"></button>
+                                            </div>
+
+                                        </div>
+                                        @*<div class="profile-info-row">
+                                            <div class="profile-info-name"> Category </div>
+
+                                            <div class="profile-info-value">
+
+                                                <select id="catIn">
+                                                    @if (Model.cat == "admin")
+                                                    {
+                                                        <option value="admin">Admin</option>
+                                                        <option value="doctor">Doctor</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="doctor">Doctor</option>
+                                                        <option value="admin">Admin</option>
+                                                    }
+                                                </select>
+
+                                                
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                    <br><br>
+                                    <div class="center">
+                                        <input type="submit" id="second-button" class="submitButton btn hide"  value="Save Changes"/>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="designation" class="tab-pane fade">
+                            <div id="user-profile-1" class="user-profile row">
+                                <div class="col-xs-12 col-sm-3 center">
+                                    <div class="space-6"></div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-8 ">
+                                    <div class="space-8"></div>
+                                    <div>
+                                        <div class="profile-user-info profile-user-info-striped">
+
+                                            <div class="profile-info-row">
+                                                <div class="profile-info-name"> Designation</div>
+                                                <div class="profile-info-value">
+
+                                                    @for (int i = 0; i < Model.desig.Count; i++)
+                                                    {
+                                                        <div>
+                                                            <input id="dId" hidden value="@(Model.desig[i].id)" />
+
+                                                            <input type="text" id="in@(Model.desig[i].id)" value="@(Model.desig[i].designation)" readonly />
+                                                            &nbsp;&nbsp;
+
+                                                            <a href="#" class="btn submitButton" onclick="editOnClickListener('@(Model.desig[i].id)')">Edit</a>
+
+                                                            &nbsp;&nbsp;
+                                                            <a href="#" class="btn submitButton" onclick="delOnClickListener('@(Model.desig[i].id)')">Delete</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#" id="up@(Model.desig[i].id)" class="btn submitButton" style="visibility:hidden" onclick="updateOnClickListener('@(Model.desig[i].id)')">Update</a>
+                                                        </div>
+                                                    }
+                                                    <br>
+                                                    <div>
+                                                        <input type="text" id="newDesign" />
+                                                        &nbsp;&nbsp;
+                                                        <input id="addNewDesig" type="submit" class="btn submitButton" value="Add" />
+
+                                                        </>
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <br><br>
+
+                                    </div>
+                                    <br><br>
+                                    <!--<div class="center">
+                                        <button id="second-button" class="btn hide">Save Changes</button>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="qualification" class="tab-pane fade">
+                            <div id="user-profile-1" class="user-profile row">
+                                <div class="col-xs-12 col-sm-3 center">
+                                    <div class="space-6"></div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-8 ">
+                                    <div class="space-8"></div>
+                                    <div class="profile-user-info profile-user-info-striped">
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> Qualification</div>
+                                            <div class="profile-info-value">
+                                                <div id="qua">
+                                                    @for (int i = 0; i < Model.qua.Count; i++)
+                                                    {
+                                                        @*@<span id="qId" hidden>@(Model.qua[i].Id)</span>*@
+
+                                                        <div>
+                                                            <input type="text" id="quaIn@(Model.qua[i].Id)" value="@(Model.qua[i].qualification)" readonly />
+                                                            &nbsp;&nbsp;
+                                                            <a href="#" class="btn submitButton" onclick="qeditOnClickListener('@(Model.qua[i].Id)')">Edit</a>
+
+                                                            &nbsp;&nbsp; 
+                                                            <a href="#" class="btn submitButton" onclick="qdelOnClickListener('@(Model.qua[i].Id)')">Delete</a>
+                                                        </div>
+                                                        <a href="#" class="btn submitButton" id="updateIn@(Model.qua[i].Id)" style="visibility:hidden" onclick="qupdateOnClickListener('@(Model.qua[i].Id)')">Update</a>
+                                                    }
+
+                                                    <div>
+                                                        <input type="text" id="newQua" />
+                                                        &nbsp;&nbsp;
+                                                        <input id="addNewQua" type="submit" class="btn submitButton" value="Add" />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="space-30"></div>
+                </div>
+
+
+            </div>
+            <!-- /.col -->
+            <!-- /.row -->
+        </div>
+    </div>
+    @*ending here*@
+
+    <script>
+
+        $("#f-button").click(function () {
+
+            $("#fname").prop('readonly', false);
+            $('#second-button').removeClass('hide');
+
+        });
+        $("#f2-button").click(function () {
+
+            $("#lname").prop('readonly', false);
+            $('#second-button').removeClass('hide');
+
+        });
+        $("#f3-button").click(function () {
+
+            $("#pass").prop('readonly', false);
+            $('#second-button').removeClass('hide');
+
+        });
+
+        $("#f6-button").click(function () {
+
+            // $("#cat").prop('readonly', false);
+            $('#second-button').removeClass('hide');
+
+        });
+
+
+
+
+        $('#second-button').click(function () {
+
+
+            var fnam = $('#fname').val();
+            var lnam = $('#lname').val();
+            var passwd = ($('#pass').val());
+
+            var profileDataObj = {
+                userName: $('#userName').text(),
+                firstName: fnam,
+                lastName: lnam,
+                pass: passwd
+
+            }
+
+            var dataToSend = JSON.stringify(profileDataObj);
+            var url = "HistoryData/updateProfile";
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, dataToSend, function (result) {
+                if (result.success === true) {
+                    MyWebApp.UI.showMessage("#spstatus", 'Data has been saved successfully', Enums.MessageType.Success);
+
+
+                } else {
+                    MyWebApp.UI.showMessage("error", result.error, Enums.MessageType.Error);
+                }
+            }, function (xhr, ajaxoptions, thrownerror) {
+                MyWebApp.UI.showMessage("#spstatus", 'A problem has occurred while saving this Data: "' + thrownerror + '". please try again.', Enums.MessageType.Error);
+            });
+
+        });
+
+        /*---------------add new designation --------------------*/
+
+        $('#addNewDesig').click(function () {
+
+            var profileDataObj = {
+                userName: $('#userName').text(),
+                desig: $('#newDesign').val()
+
+            }
+
+            var dataToSend = JSON.stringify(profileDataObj);
+            var url = "HistoryData/addDesig";
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, dataToSend, function (result) {
+                if (result.success === true) {
+                    MyWebApp.UI.showMessage("#spstatus", 'Designation has been saved successfully', Enums.MessageType.Success);
+
+
+                } else {
+                    MyWebApp.UI.showMessage("error", result.error, Enums.MessageType.Error);
+                }
+            }, function (xhr, ajaxoptions, thrownerror) {
+                MyWebApp.UI.showMessage("#spstatus", 'A problem has occurred while saving this Data: "' + thrownerror + '". please try again.', Enums.MessageType.Error);
+            });
+
+        });
+        /*---------------DELETE designation --------------------*/
+        function delOnClickListener(id) {
+
+
+            if (confirm('Are you sure you want to delete ?')) {
+
+
+                var desigId = id;
+                var toUpdate = {
+                    id: desigId
+
+                }
+                var data = JSON.stringify(toUpdate);
+                var url = "HistoryData/removeDesig";
+
+
+                MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                    if (result.success === true) {
+                        console.log(result);
+
+                        MyWebApp.UI.showRoasterMessage("designation is deleted successfully!", Enums.MessageType.Success);
+                    } else {
+                        MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                    }
+                }, function (xhr, ajaxOptions, thrownError) {
+                    MyWebApp.UI.showRoasterMessage('A problem has occurred while deleting ROS: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+                });
+            }
+        }
+        /*---------------add new QUALIFICATION --------------------*/
+
+        $('#addNewQua').click(function () {
+
+            var profileDataObj = {
+                userName: $('#userName').text(),
+                qua: $('#newQua').val()
+
+            }
+            //alert(profileDataObj.userName + " " + profileDataObj.qua);
+            var dataToSend = JSON.stringify(profileDataObj);
+            var url = "HistoryData/addQua";
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, dataToSend, function (result) {
+                if (result.success === true) {
+                    MyWebApp.UI.showMessage("#spstatus", 'Qualification has been saved successfully', Enums.MessageType.Success);
+
+
+                } else {
+                    MyWebApp.UI.showMessage("error", result.error, Enums.MessageType.Error);
+                }
+            }, function (xhr, ajaxoptions, thrownerror) {
+                MyWebApp.UI.showMessage("#spstatus", 'A problem has occurred while saving this Data: "' + thrownerror + '". please try again.', Enums.MessageType.Error);
+            });
+
+        });
+        /*---------------DELETE qualification --------------------*/
+        function qdelOnClickListener(id) {
+
+
+            if (confirm('Are you sure you want to delete ?')) {
+
+
+                var quaId = id;
+                var toUpdate = {
+                    id: quaId
+
+                }
+                var data = JSON.stringify(toUpdate);
+                var url = "HistoryData/removeQua";
+
+
+                MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                    if (result.success === true) {
+                        console.log(result);
+
+                        MyWebApp.UI.showRoasterMessage("Qua is deleted successfully!", Enums.MessageType.Success);
+                    } else {
+                        MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                    }
+                }, function (xhr, ajaxOptions, thrownError) {
+                    MyWebApp.UI.showRoasterMessage('A problem has occurred while deleting ROS: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+                });
+            }
+        }
+
+        /***-------------------edit designation----------------------**/
+        function editOnClickListener(id) {
+
+
+             var i =String(id);
+            $("#in"+i.toString()).prop('readonly', false);
+            $("#up"+i.toString()).css('visibility','visible');
+
+        }
+        /*---------------update designation --------------------*/
+        function updateOnClickListener(id) {
+
+            var i =String(id);
+            var desigId = id;
+
+                var toUpdate = {
+                    id: desigId,
+                    desig :$("#in"+i.toString()).val()
+
+                }
+                var data = JSON.stringify(toUpdate);
+                var url = "HistoryData/updateDesig";
+
+
+                MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                    if (result.success === true) {
+                        console.log(result);
+
+                        MyWebApp.UI.showRoasterMessage("designation is updated successfully!", Enums.MessageType.Success);
+                    } else {
+                        MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                    }
+                }, function (xhr, ajaxOptions, thrownError) {
+                    MyWebApp.UI.showRoasterMessage('A problem has occurred while updating designation: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+                });
+
+        }
+        /***-------------------edit qualification----------------------**/
+        function qeditOnClickListener(id) {
+
+
+            var i = String(id);
+            $("#quaIn" + i.toString()).prop('readonly', false);
+            $("#updateIn" + i.toString()).css('visibility', 'visible');
+
+        }
+        /*---------------update QUALIFICATION --------------------*/
+        function qupdateOnClickListener(id) {
+
+            var i = String(id);
+            var quaId = id;
+
+            var toUpdate = {
+                id: quaId,
+                qua: $("#iquaIn" + i.toString()).val()
+
+            }
+            var data = JSON.stringify(toUpdate);
+            var url = "HistoryData/updateQua";
+
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                if (result.success === true) {
+                    console.log(result);
+
+                    MyWebApp.UI.showRoasterMessage("Qualification is updated successfully!", Enums.MessageType.Success);
+                } else {
+                    MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                }
+            }, function (xhr, ajaxOptions, thrownError) {
+                MyWebApp.UI.showRoasterMessage('A problem has occurred while updating qualification: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+            });
+
+        }
+    </script>
+
+
+</body>
+
+
+

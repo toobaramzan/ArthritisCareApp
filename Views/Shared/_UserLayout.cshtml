@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@section Header
+{
+    @Styles.Render("~/Content/timepicker")
+    @RenderSection("Header",false)
+}
+@section scripts
+{
+    @RenderSection("scripts",false)
+}
+
+  
+@{Html.RenderPartial("_HomeSidebar"); }
+@RenderBody()

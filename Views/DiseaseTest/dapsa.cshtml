@@ -1,0 +1,138 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/mywebapp.ui.dapsaTest.js")"></script>
+
+
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+           MyWebApp.UI.dapsaTest.readyMain();
+        });
+    </script>
+}
+
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a class="active" href="#">Home</a>
+							</li>
+							
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">					
+
+						<div class="page-header">
+							<h1>
+								Dashboard
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									DAPSA
+								</small>
+							</h1>
+						</div><!-- /.page-header -->
+						<div class="container" id="homeBg">	
+							
+							&nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-plus" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;DAPSA Test</b></h4>
+							<br><br>
+							<div class="row">
+							<div class="col-sm-3">
+							
+							</div>
+							
+							<div  class="col-sm-4">
+							<label id="formTextDco">TJC</label>
+							<div class="space-4"></div>
+							<input type="number" min="0" id="tjc3"/><br><br>
+							</div>						
+							<div class="col-sm-4">
+							<label id="formTextDco">SJC</label>
+							<div class="space-4"></div>
+							<input type="number" min="0" id="sjc3"/><br><br>
+							</div>
+							</div>
+					
+							<div class="row">
+							<div class="col-sm-3">
+							</div>
+							
+							<div class="col-sm-4">
+							<b id="formTextDco">PJA</b>
+							<div class="space-4"></div>
+							<input type="number" min="0" id="pja3"/>
+							 <br><br>
+							 </div>
+
+							 <div class="col-sm-4">
+							 <label id="formTextDco">CRP</label>
+							 <div class="space-4"></div>
+							<input type="number" min="0" id="crp3"/><br><br>
+							
+							 </div>						 
+							 </div>
+							 
+							 <div class="row">
+							<div class="col-sm-3">
+							</div>
+							
+							<div class="col-sm-4">
+							<b id="formTextDco">PP</b>
+							<div class="space-4"></div>
+							<input type="number" min="0" id="pp3"/>
+							 <br><br>
+							 </div>
+							 
+							 
+							 </div>
+							
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-3">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input class="submitButton" id="resultBtnDapsa" type="submit" value=Result style="color:white;" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-8" id="resRow3">
+                                    <h4 id="testRes"><u>Result:</u> &nbsp;&nbsp;<label id="resValue3" class="testLabel">22 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Indicator:</u>&nbsp;&nbsp; <label id="indicator3" class="testLabel"> High </label></h4>
+
+
+                                </div>
+                            </div>
+							<div class="space-30"></div>
+							
+						
+						
+											
+							</div>
+																																															
+								<!-- /.col -->
+								
+						<!-- /.row -->
+						
+						</div>
+						</div>
+								<!-- PAGE CONTENT ENDS -->
+						
+					</div><!-- /.page-content -->
+				<!-- /.main-content -->

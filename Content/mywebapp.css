@@ -1,0 +1,113 @@
+﻿/* Start Message Styles */
+.msgError, .msgInfo, .msgSuccess, .msgWarning, .msgLoading
+{
+    padding: 15px;
+    border: 1px solid;
+    display: block;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.msgError
+{
+    border-color: #EECC7A;
+    background: #ffffe6 url(images/icon-error.png) no-repeat 10px center !important;
+    color: #F00;
+}
+
+.msgInfo
+{
+    border-color: #e0f7e5;
+    background: #d9eede url(images/icon-info.png) no-repeat 10px center;
+    color: #006633;
+}
+
+.msgSuccess
+{
+    border-color: #95bf93;
+    background: #d9eede url(images/ico-approve.png) no-repeat 10px center !important;
+    color: #006633;
+}
+.msgWarning
+{
+    border-color: #e0f7e5;
+    background: #d9eede url(images/icon-warning.png) no-repeat 10px center !important;
+    color: #006633;
+}
+.msgLoading
+{
+    border: 1px solid #CCC;
+    display: block;
+    background: url(images/js_preloader.gif) no-repeat 10px center !important;
+}
+
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #ebd72c;
+	background-color: #faf3c1;
+	padding: 5px 10px;
+	opacity: 0.90;
+	text-align:center;
+	color:#19192a;
+	-webkit-border-radius: 2px;
+border-radius: 2px;
+}
+
+#tooltip div { margin: 0; 
+}
+	
+#tooltip h3{ font-size:11px; font-weight:normal;line-height:16px;margin-bottom:0px;}
+
+#overlay 
+{
+background:white;
+width:200px;
+height:200px;
+border:4px black;
+display:none;
+z-index:91;
+position:absolute;
+top: 8%;
+bottom:0;
+left: 85%;
+opacity:1.0;
+-moz-opacity:0.45;
+filter:alpha(opacity=45);}
+
+
+
+.watermark {
+			color: #999 !important;
+		}
+.UpdateProgressOverlay
+{
+    -moz-opacity: .5;
+    background-color: #000000;
+    bottom: 0;
+    display: none;
+    filter: alpha(opacity=50);
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 8000000;
+}
+.UpdateProgressStatus
+{
+    display: none;
+    left: 50%;
+    margin-top: -50px;
+    position: fixed;
+    top: 50%;
+    z-index: 8000001;
+}
+
+.navlinks a
+{
+    padding: 5px;
+    margin: 5px;
+}

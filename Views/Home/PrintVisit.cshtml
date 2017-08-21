@@ -1,0 +1,174 @@
+﻿@model PUCIT.AIMRL.PRM.Entities.customEntities.VisitPageData
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "PrintVisit";
+}
+<html>
+<head>
+
+    <title>VisitPagePrint</title>
+    @*<link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />*@
+    <link href="~/Content/PrintCSS/printPatientVisit.css" rel="stylesheet" media="all" />
+    
+    </head>
+    <body>
+      
+                <div id="side"><br />
+                    <div id="docInfo">
+                        <h3>Prof. Nighat Mir Ahmad, MD</h3>
+                        <h4>MBBS, FACP, FACR</h4>
+                        <h5>Diplomate American Board of Rheumatology</h5>
+                        <h5>Diplomate American Board of Internal Medicine</h5>
+                        <p>Consultant Physician & Rheumatologist </p>
+                        <p>Head Divion of Rheumatology,</p>
+                        <p>F.M.H. College of Medicine and Dentistry</p>
+                    </div>
+
+                    <div id="docInfo">
+                        <h3>Dr. Sumaira Farman Raja</h3>
+                        <h5>MBBS, FACP, FRCP, FACR, SCE Rheumatology (UK) </h5>
+                        <h6>Graduate Certificate Paediatric Rheumatology (Australia)</h6>
+                        <p>Consultant Physician & Rheumatologist</p>
+                        <p>Associate Professor, Division of Rheumatology,</p>
+                        <p>F.M.H. College of Medicine and Dentistry</p>
+                    </div>
+
+                    <div id="docInfo">
+                        <h3>Dr. Muhammad Ahmed Saeed</h3>
+                        <h4>MBBS, FCPS Rheumatology, FACR</h4>
+                        <h4>FCPS Internal Medicine </h4>
+                        <p>Consultant Physician & Rheumatologist</p>
+                        <p>Associate Professor, Division of Rheumatology,</p>
+                        <p>F.M.H. College of Medicine and Dentistry</p>
+                    </div><br />
+                    <div id="docInfo">
+                        @{String[] dis = { "Arthritis Care", "Lupus (SLE)", "Back & Neck Pain/Spondylitis", "Vasculitis", "Myositis", "Juvenile Arthritis", "Osteoporosis", "Soft Tissue Rheumatism" };
+                            bool flag = false;
+                            if (Model.DiseaseList.Count > 0)
+                            {
+                                for (int k = 0; k < dis.Length; k++)
+                                {
+                                    for (int i = 0; i < Model.DiseaseList.Count; i++)
+                                    {
+                                        if (Model.DiseaseList[i].Equals(dis[k]))
+                                        {
+                                        <p><b><u>@dis[k]</u></b></p>
+                                            flag = true;
+                                            break;
+                                        }
+                                    }
+                                    if (flag == false)
+                                    {
+                                 <p>@dis[k]</p>
+                                    }
+                                    flag = false;
+                                }
+                            }
+                            string[] date = Model.date.ToString().Split(' ');
+                            }
+
+                    </div>
+                    <br /><br />
+                    <img id="skel" src="~/images/myImage/skelfinGIF.gif">
+                    <br /><br />
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TJC&nbsp;<u>@Model.Tjc</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SJC&nbsp;<u>@Model.Sjc</u>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VAS&nbsp;<u>@Model.Vas</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DAS28&nbsp;<u>@Model.Das28</u>
+                    </p>
+                    <br><br><br>
+                </div>
+        
+                <div class="right"><br />
+                    <h3 id="orgName">Arthritis Care Clinics&nbsp;&nbsp;&nbsp;</h3>
+                    <img id="logo" src="~/images/myImage/logoGIF.gif">
+                    <h6>Centres For Rheumatic Diseases </h6>
+                    <br />
+                    <h4>Date: &nbsp;<label id="unbold">@date[0]</label></h4><div class="spacer10"></div>
+                    <h4>Last F/U: &nbsp;<label id="unbold">@Model.LastFu</label></h4>
+
+                </div>
+            
+            <div id="middleDiv">
+                <br /><br />
+                <h4>Name&nbsp;&nbsp; <label id="unbold">@Model.Name</label></h4><br />
+                <h4>Age&nbsp;&nbsp;&nbsp;<label id="unbold">@Model.Age</label></h4><br />
+                <div id="probList">
+                    <h4><u>Problem List</u></h4><div class="spacer6"></div>
+                    <p>@Model.ProblemList</p>
+                </div>
+                     <br />
+                <div class="rightDiv">
+                    <div id="labs">
+                        <h4><u>Labs</u></h4>
+                        <div class="spacer6"></div>
+                        @if (Model.LabName.Count > 0)
+                        {
+                            for (int i = 0; i < Model.LabName.Count; i++)
+                            {
+                        <p>@Model.LabName[i]&nbsp; <label id="unbold">@Model.LabVal[i]</label></p>
+                            }
+                        }
+                    </div><br /><br />
+                    <h4>BP&nbsp;&nbsp;&nbsp;<label id="unbold">@Model.SystolicBp/@Model.DiastolicBp</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wt&nbsp;&nbsp;&nbsp;<label id="unbold">@Model.Weight @Model.WeightUnit</label></h4><br />
+                    <h4>
+                        General
+                    </h4>
+                        <p>@Model.General</p>
+                    <br />
+                    <h4>
+                        Systemic
+                    </h4>
+                        <p>@Model.Systemic</p>
+                    <br /><br />
+</div>
+                <div id="leftDiv">
+                    <div id="meds">
+                        <h4><u>Medications</u></h4><div class="spacer6"></div>
+                        @if (Model.MedName.Count > 0)
+                        {
+                            for (int i = 0; i < Model.MedName.Count; i++)
+                            {
+                        <p>@Model.MedName[i]&nbsp; <label id="unbold">@Model.MedVal[i] &nbsp;@Model.MedType[i]</label></p>
+                            }
+                        }
+                    </div><br />
+                    <div id="cc">
+                        <h4><u>CC</u></h4><div class="spacer6"></div>
+                        <p>@Model.ProblemList</p>
+                    </div></div><br /><br />
+                <div id="assessBox">
+                    <h4><u>Assessment/Plan</u></h4><div class="spacer6"></div>
+                    <p>
+                        @Model.TreatmentPlan
+                    </p>
+                </div>
+                </div>
+        <hr noshade />
+     <div id="divBottom" class="btmDivs">
+         <p>Division of Rheumatology</p>
+         <h5>Fatima Memorial College of Medicine & Dentistry </h5>
+         <p>Shadam, Lahore</p>
+         <p>UAN: 111-555-600 Ext.408</p>
+     </div>
+        <div class="btmDivs">
+            <h5>National Hospital & Medical Centre</h5>
+            <p>132-L, Defense, Lahore </p>
+            <p>UAN: 111-17-18-19 Ext.163,164</p>
+            <p>Fax: 042-5728761</p>
+            <h5>Mob: 0302-4500199</h5>
+        </div>
+        <div class="btmDivs" id="divBtmRight">
+            <h5>Arthritis Care Clinic</h5>
+            <p>676-shadman, Opposite </p>
+            <p>City District Govt.</p>
+            <p>Girls High School. Lahore</p>
+            <p>Ph: 042-37424569</p>
+            <h5>Mob: 0306-4642876</h5>
+        </div><div class="spacer8"></div>
+        <h4 id="alignCenter">Consultation by Appointment</h4><br />
+    
+        </body>
+</html>
+ 

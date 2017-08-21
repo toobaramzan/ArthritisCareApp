@@ -1,0 +1,342 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/ModifyForm/mywebapp.ui.ModifyLabs.js")"></script>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            MyWebApp.UI.ModifyLabs.readyMain();
+        });
+    </script>
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+
+                    Modify Labs
+                </li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+        <div class="page-content">
+            <div class="space-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+                <div class="row">
+                    &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-hospital-o" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;LABS</b></h4>
+                    <div class="space-10"></div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                            <div class="col-sm-4" id="hisLab">
+                                <table class="table table-hover" style="width:100%">
+                                    <tbody id="hlabbody"></tbody>
+
+                                </table>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <table class="table table-hover" style="width:100%">
+                                    <tbody id="Clabbody"></tbody>
+
+                                </table>
+                                <table class="table table-hover" style="width:100%">
+                                    <tbody id="vlabbody"></tbody>
+
+                                </table>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <div class="space-10"></div>
+                            <label><b>Add Labs </b></label>
+                            <div class="space-4"></div>
+                            <input type="text" placeholder="Lab Name" id="newLabName" />
+                            <div class="space-4"></div>
+                            <select id="newLabType">
+                                <option value="Unary">Lab With One Text/filed Only</option>
+                                <option value="Binary">Lab with Text/filed and Lab type options</option>
+                            </select>
+                            <div class="space-4"></div><br>
+
+                            <input type="radio" name="user-lab" id="rbhisLab" value="HistoryLab" />History Labs &nbsp;&nbsp;
+                            <input type="radio" name="user-lab" id="rbvisitLab" value="VisitLab" /> Visit Lab&nbsp;&nbsp;
+                            <input type="radio" name="user-lab" id="both" value="both" /> Both
+                            <input type="submit" value="Add" id="addLabbtn" />  &nbsp;&nbsp;
+                        </div>
+                    </div>
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <br><br><br><br>
+            </div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<script id="visitLabListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each visitLab}}
+    <tr>
+
+        <td>
+            {{labName}}
+        </td>
+
+        <td>
+            <a href="vLabUpdateConfirm/{{id}}">Update</a>
+        </td>
+        <td>
+            <a href="#" onclick="delvLabOnClickListener('{{id}}')">Delete</a>
+        </td>
+    </tr>
+
+    {{/each}}
+
+</script>
+<!--HandleBar code to display List of his medicines-->
+<script id="hisLabListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each historyLab}}
+    <tr>
+
+        <td>
+            {{labName}}
+        </td>
+
+        <td>
+            <a href="hLabUpdateConfirm/{{id}}">Update</a>
+        </td>
+        <td>
+            <a href="#" onclick="delhLabOnClickListener('{{id}}')">Delete</a>
+        </td>
+    </tr>
+
+    {{/each}}
+
+</script>
+<!--HandleBar code to display List of his medicines-->
+<script id="CLabListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each commonLab}}
+    <tr>
+
+        <td>
+            {{labName}}
+        </td>
+
+        <td>
+            <a href="cLabUpdateConfirm/{{id}}">Update</a>
+        </td>
+        <td>
+            <a href="#" onclick="delcLabOnClickListener('{{id}}')">Delete</a>
+        </td>
+    </tr>
+
+    {{/each}}
+
+</script>
+<script>
+    function delvLabOnClickListener(id) {
+
+        if (confirm('Are you sure you want to delete Visit Lab ?')) {
+
+
+            var labId = id;
+            var toUpdate = {
+                ToBeUpdated: labId
+
+            }
+            var data = JSON.stringify(toUpdate);
+            var url = "ModifyForm/removeVLab";
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                if (result.success === true) {
+
+                    console.log(result);
+
+                    MyWebApp.UI.showRoasterMessage("Visit Lab is deleted successfully!", Enums.MessageType.Success);
+                    GetLabList();
+                } else {
+                    MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                }
+            }, function (xhr, ajaxOptions, thrownError) {
+                MyWebApp.UI.showRoasterMessage('A problem has occurred while deleting Visit Lab: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+            });
+        }
+    }
+
+    function delhLabOnClickListener(id) {
+
+        if (confirm('Are you sure you want to delete Hitory Lab?')) {
+
+
+            var labId = id;
+            var toUpdate = {
+                ToBeUpdated: labId
+
+            }
+            var data = JSON.stringify(toUpdate);
+            var url = "ModifyForm/removeHLab";
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                if (result.success === true) {
+
+                    console.log(result);
+                    GetLabList();
+                    MyWebApp.UI.showRoasterMessage("History Lab is deleted successfully!", Enums.MessageType.Success);
+                } else {
+                    MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                }
+            }, function (xhr, ajaxOptions, thrownError) {
+                MyWebApp.UI.showRoasterMessage('A problem has occurred while deleting History Lab: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+            });
+        }
+    }
+    function delcLabOnClickListener(id) {
+
+        if (confirm('Are you sure you want to delete common Lab?')) {
+
+
+            var labId = id;
+            var toUpdate = {
+                ToBeUpdated: labId
+
+            }
+            var data = JSON.stringify(toUpdate);
+            var url = "ModifyForm/removecLab";
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                if (result.success === true) {
+
+                    console.log(result);
+                    GetLabList();
+                    MyWebApp.UI.showRoasterMessage("common Lab is deleted successfully!", Enums.MessageType.Success);
+                } else {
+                    MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                }
+            }, function (xhr, ajaxOptions, thrownError) {
+                MyWebApp.UI.showRoasterMessage('A problem has occurred while deleting History Lab: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+            });
+        }
+    }
+
+    function GetLabList() {
+
+        var url = "ModifyForm/getVLabList";
+
+        MyWebApp.Globals.MakeAjaxCall("GET", url, "{}", function (result) {
+
+            if (result.success === true) {
+                console.log(result);
+                DisplayVisitLabList(result.data);
+
+            } else {
+                MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+            }
+        }, function (xhr, ajaxOptions, thrownError) {
+            MyWebApp.UI.showRoasterMessage('A problem has occurred while getting Visit Lab: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+        });
+
+        var url = "ModifyForm/getHLabList";
+        MyWebApp.Globals.MakeAjaxCall("GET", url, "{}", function (result) {
+
+            if (result.success === true) {
+                console.log(result);
+                DisplayHisLabList(result.data);
+
+            } else {
+                MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+            }
+        }, function (xhr, ajaxOptions, thrownError) {
+            MyWebApp.UI.showRoasterMessage('A problem has occurred while History Lab: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+        });
+
+        var url = "ModifyForm/getCLabList";
+        MyWebApp.Globals.MakeAjaxCall("GET", url, "{}", function (result) {
+
+            if (result.success === true) {
+                console.log(result);
+                DisplayCLabList(result.data);
+
+            } else {
+                MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+            }
+        }, function (xhr, ajaxOptions, thrownError) {
+            MyWebApp.UI.showRoasterMessage('A problem has occurred while History Lab: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+        });
+
+    }
+    function DisplayVisitLabList(data) {
+
+        $("#vlabbody").html("");
+
+        if (!data)
+            return;
+
+        var source = $("#visitLabListDisplaytemplate").html();
+        var template = Handlebars.compile(source);
+        var html = template(data);
+        $("#vlabbody").append(html);
+
+        //BindAndFormat();
+
+    }
+    function DisplayHisLabList(data) {
+
+        $("#hlabbody").html("");
+
+        if (!data)
+            return;
+
+        var source = $("#hisLabListDisplaytemplate").html();
+        var template = Handlebars.compile(source);
+        var html = template(data);
+        $("#hlabbody").append(html);
+
+        //BindAndFormat();
+    }
+    function DisplayCLabList(data) {
+
+        $("#Clabbody").html("");
+
+        if (!data)
+            return;
+
+        var source = $("#CLabListDisplaytemplate").html();
+        var template = Handlebars.compile(source);
+        var html = template(data);
+        $("#Clabbody").append(html);
+
+        //BindAndFormat();
+
+    }
+</script>

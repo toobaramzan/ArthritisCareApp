@@ -1,0 +1,178 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/mywebapp.ui.sleTest.js")"></script>
+
+
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+           MyWebApp.UI.sleTest.readyMain();
+        });
+    </script>
+}
+
+
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a class="active" href="#">Home</a>
+                </li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+
+            <div class="page-header">
+                <h1>
+                    Dashboard
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        SLE Test
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+            <div class="container" id="homeBg">
+
+                &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-plus" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;SLE Test</b></h4>
+                <br>
+
+                <div id="formAlign" class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-4" id="formTextDco">
+
+                        <br>
+                        <input type="checkbox" name="seizure" value="seizure">&nbsp; Seizure<br>
+                        <br />
+                        <input type="checkbox" name="phy chosis" value="phy chosis">&nbsp; Phy Chosis<br>
+                        <br />
+                        <input type="checkbox" name="organic brain syndrome" value="Organic Brain Syndrome">&nbsp; Organic Brain Syndrome<br>
+                        <br />
+                        <input type="checkbox" name="visual disturbance" value="Visual Disturbance">&nbsp; Visual Disturbance<br>
+                        <br />
+                        <input type="checkbox" name="clinical nerve disorder" value="Clinical Nerve Disorder">&nbsp; Clinical Nerve Disorder<br>
+                        <br />
+                        <input type="checkbox" name="Pericarditis" value="Pericarditis">&nbsp; Pericarditis<br>
+                        <br />
+                        <input type="checkbox" name="low c3/c4" value="Low c3/c4">&nbsp; Low c3/c4<br>
+                        <br />
+                        <input type="checkbox" name="increased dna binding" value="Increased DNA Binding">&nbsp; Increased DNA Binding<br>
+                        <br />
+                        <input type="checkbox" name="fever" value="Fever">&nbsp; Fever
+                    </div>
+
+
+                    <div id="formTextDco" class="col-sm-4">
+                        <br>
+                        <input type="checkbox" name="thromb ocytopanic" value="Thromb Ocytopanic">&nbsp; Thromb Ocytopanic<br>
+                        <br />
+                        <input type="checkbox" name="leuhpenia" value="Leuhpenia">&nbsp; Leuhpenia<br>
+                        <br />
+                        <input type="checkbox" name="lupus headache" value="Lupus Headache">&nbsp; Lupus Headache<br>
+                        <br />
+                        <input type="checkbox" name="cva" value="CVA">&nbsp; CVA<br>
+                        <br />
+                        <input type="checkbox" name="vasculitis" value="Vasculitis">&nbsp; Vasculitis<br>
+                        <br />
+                        <input type="checkbox" name="arthiritis" value="Arthiritis">&nbsp; Arthiritis<br>
+                        <br />
+                        <input type="checkbox" name="myositis" value="Myositis">&nbsp; Myositis<br>
+                        <br />
+                        <input type="checkbox" name="new rash" value="New Rash">&nbsp; New Rash<br>
+                        <br />
+                        <input type="checkbox" name="alopia" value="Alopia">&nbsp; Alopia
+                    </div>
+                </div>
+
+
+
+                <div id="formAlign" class="row">
+                    <div class="col-sm-3"></div>
+                    <div id="formTextDco" class="col-sm-4">
+                        <br>
+                        Urinary
+                        <div class="space-4"></div>
+                        <input type="number" id="urinray" value="0" /><br><br>
+                        Protein Uria
+                        <div class="space-4"></div>
+                        <input type="number" id="puria" value="0" /><br><br>
+                    </div>
+
+                    <div id="formTextDco" class="col-sm-4">
+                        <br>
+                        Hemet Uria
+                        <div class="space-4"></div>
+                        <input type="number" id="huria" value="0" /><br><br>
+                        PY Urea
+                        <div class="space-4"></div>
+                        <input type="number" id="pyurea" value="0" /><br><br>
+
+                    </div>
+
+                </div>
+
+
+                <div class="space-4"></div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-3">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="submitButton" id="resultBtnSle" type="submit" value=Result style="color:white;" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-8" id="resRow8">
+                        <h4 id="testRes"><u>Result:</u> &nbsp;&nbsp;<label id="resValue8" class="testLabel">22 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Indicator:</u>&nbsp;&nbsp; <label id="indicator8" class="testLabel"> High </label></h4>
+
+
+                    </div>
+                </div>
+                <div class="space-30"></div>
+
+
+
+
+
+            <!-- /.col -->
+            <!-- /.row -->
+
+        </div>
+    </div>
+    <!-- PAGE CONTENT ENDS -->
+
+</div><!-- /.page-content -->
+<!-- /.main-content -->
+<div class="modal fade" id="sleModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:red">Warning</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:16px;" id="modelPara">Please Fill All Fields!</p>
+            </div>
+
+        </div>
+    </div>
+</div>

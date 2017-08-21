@@ -1,0 +1,164 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/ModifyForm/mywebapp.ui.ModifyPMH.js")"></script>
+
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            MyWebApp.UI.ModifyPMH.readyMain();
+        });
+    </script>
+}			<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    Modify PMH
+                </li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+        <div class="page-content">
+            <div class="col-sm-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+                <div class="row">
+                    &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-hospital-o" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;PMH</b></h4>
+                    <div class="space-10"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-6">
+                            <table class="table table-hover" style="width:100%">
+
+                                <tbody id="pmhBody"></tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <div class="space-10"></div>
+                            <label><b>Add PMH </b></label>
+                            <div class="space-4"></div>
+                            <input type="text" placeholder="PMH Name" id="newPMHName" />
+                            <div class="space-4"></div>
+                            <input type="submit" value="Add" id="addPMHBtn" />
+                        </div>
+                    </div>
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <br><br><br><br>
+            </div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<!--Handle bar to dipslay PMH-->
+<script id="pmhListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each pmhList}}
+    <tr>
+
+        <td>
+            {{pmhName}}
+
+        </td>
+        <td>
+            <a href="pmhUpdateConfirmation/{{id}}">Update</a>
+        </td>
+        <td>
+            <a href="#" onclick="delOnClickListener('{{id}}')">Delete</a>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+<script>
+
+    function delOnClickListener(id) {
+
+
+        if (confirm('Are you sure you want to delete ?')) {
+
+
+            var pmhId = id;
+            var toUpdate = {
+                ToBeUpdated: pmhId
+
+            }
+            var data = JSON.stringify(toUpdate);
+            var url = "ModifyForm/removePMH";
+
+
+            MyWebApp.Globals.MakeAjaxCall("POST", url, data, function (result) {
+
+                if (result.success === true) {
+
+                    console.log(result);
+                    GetPMHList();
+                    MyWebApp.UI.showRoasterMessage("PMH is deleted successfully!", Enums.MessageType.Success);
+                } else {
+                    MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+                }
+            }, function (xhr, ajaxOptions, thrownError) {
+                MyWebApp.UI.showRoasterMessage('A problem has occurred while deleting PMH: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+            });
+        }
+    }
+    function GetPMHList() {
+
+        var url = "ModifyForm/getPMHList";
+
+        MyWebApp.Globals.MakeAjaxCall("GET", url, "{}", function (result) {
+
+            if (result.success === true) {
+                console.log(result);
+                DisplayPMHList(result.data);
+
+            } else {
+                MyWebApp.UI.showRoasterMessage(result.error, Enums.MessageType.Error);
+
+            }
+        }, function (xhr, ajaxOptions, thrownError) {
+            MyWebApp.UI.showRoasterMessage('A problem has occurred while getting PMH List: "' + thrownError + '". Please try again.', Enums.MessageType.Error);
+        });
+
+    }
+
+    function DisplayPMHList(pmhList) {
+
+        $("#pmhBody").html("");
+
+        if (!pmhList)
+            return;
+        var source = $("#pmhListDisplaytemplate").html();
+        var template = Handlebars.compile(source);
+
+        var html = template(pmhList);
+        $("#pmhBody").append(html);
+
+        //BindAndFormat();
+
+    }
+</script>

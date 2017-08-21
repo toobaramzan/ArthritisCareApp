@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+@section Header
+{
+    @Styles.Render("~/Content/timepicker")
+    @RenderSection("Header")
+}
+@section scripts
+{
+    @RenderSection("scripts")
+}
+@RenderBody()
+
+

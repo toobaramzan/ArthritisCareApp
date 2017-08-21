@@ -1,0 +1,234 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/mywebapp.ui.basdaiTest.js")"></script>
+
+
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+           MyWebApp.UI.basdaiTest.readyMain();
+        });
+    </script>
+}
+<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a class="active" href="#">Home</a>
+							</li>
+							
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+					<div class="page-content">					
+
+						<div class="page-header">
+							<h1>
+								Dashboard
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									BASDAI Test
+								</small>
+							</h1>
+						</div><!-- /.page-header -->
+						<div class="container" id="homeBg">	
+							
+							&nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-plus" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;BASDAI Test</b></h4>
+							<br><br><br>
+							<div class="row">
+							<div class="col-sm-2">
+							</div>
+							<div class="col-sm-9">
+							<div >
+							<h4><b><u>Fatigue</u></b></h4>
+							 <label class="labelText">1.How would you describe the overall level of fatigue/tiredness you have experienced?</label>
+							 <div class="space-4"></div>
+                                <fieldset id="fatigue">
+                                    <div class="radioFormat">
+                                        <input type="radio" name="fatigue" value=0 /> 0&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=1 /> 1&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=2 /> 2&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=3 /> 3&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=4 /> 4&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=5 /> 5&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=6 /> 6&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=7 /> 7&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=8 /> 8&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=9 /> 9&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="fatigue" value=10 /> 10&nbsp;&nbsp;
+                                    </div>
+                                </fieldset>
+                                    <label id="labelAlign"><b>None </b></label>
+                                    <label><b> Very Severe</b></label>
+                                <div class="space-4"></div>
+                                <h4 align="center" id="fatigueRes" hidden></h4>
+
+							 <div class="space-10"></div>
+                              
+                                <div>
+                                    <h4><b><u>Spinal pain</u></b></h4>
+                                    
+                                    <label class="labelText">2. How would you describe the overall level of AS neck ,back or hip pain you have had?</label>
+                                    <div class="space-4"></div>
+                                    <div class="radioFormat">
+                                        <input type="radio" name="Spinalpain" value=0 /> 0&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=1 /> 1&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=2 /> 2&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=3 /> 3&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=4 /> 4&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=5 /> 5&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=6 /> 6&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=7 /> 7&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=8 /> 8&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=9 /> 9&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="Spinalpain" value=10 /> 10&nbsp;&nbsp;
+                                    </div>
+
+                                    <label id="labelAlign"><b>None </b></label>
+                                    <label> <b>Very Severe</b></label>
+                                </div>
+                                <div class="space-4"></div>
+                                <h4 align="center" id="spinalRes" hidden></h4>
+                                <div class="space-10"></div>
+
+							 <div>
+							<h4><b><u>Peripheral arthritis</u></b></h4>
+					
+							 <label class="labelText">3. How would you describe the overall level of pain/swelling in joints other than neck ,back or hips you have had?</label>
+                          <div class="space-4"></div>
+                          <div class="radioFormat">
+                              <input type="radio" name="Peripheralarthritis" value=0 /> 0&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=1 /> 1&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=2 /> 2&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=3 /> 3&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=4 /> 4&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=5 /> 5&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=6 /> 6&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=7 /> 7&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=8 /> 8&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=9 /> 9&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Peripheralarthritis" value=10 /> 10&nbsp;&nbsp;
+                          </div>
+
+                          <label id="labelAlign"><b>None </b></label>
+                          <label><b> Very Severe</b></label>
+                          <div class="space-4"></div>
+                          <h4 align="center" id="PeripheralRes" hidden></h4>
+                          <div class="space-10"></div>
+							 
+							 <div>
+							<h4><b><u>Enthesitis</u></b></h4>
+					
+							 <label class="labelText">4. How would you describe the overall level of discomfort you have had from any areas tender to touch or presure?</label>
+                          <div class="space-4"></div>
+                          <div class="radioFormat">
+                              <input type="radio" name="Enthesitis" value=0 /> 0&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=1 /> 1&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=2 /> 2&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=3 /> 3&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=4 /> 4&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=5 /> 5&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=6 /> 6&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=7 /> 7&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=8 /> 8&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=9 /> 9&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Enthesitis" value=10 /> 10&nbsp;&nbsp;
+                          </div>
+
+                          <label id="labelAlign"><b>None </b></label>
+                          <label><b> Very Severe</b></label>
+                          <div class="space-4"></div>
+                          <h4 align="center" id="EnthesitisRes" hidden></h4>
+                          <div class="space-10"></div>
+							 </div>
+							 
+							 <div>
+							<h4><b><u>Intensity of morning stiffness</u></b></h4>
+							
+							 <label class="labelText">5. How would you describe the overall level of morning stiffness you have had from the time you wake up?</label>
+                          <div class="space-4"></div>
+                          <div class="radioFormat">
+                              <input type="radio" name="Intensityofmorningstiffness" value=0 /> 0&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=1 /> 1&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=2 /> 2&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=3 /> 3&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=4 /> 4&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=5 /> 5&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=7 /> 7&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=8 /> 8&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=9 /> 9&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Intensityofmorningstiffness" value=10 /> 10&nbsp;&nbsp;
+                          </div>
+
+                          <label id="labelAlign"><b>None </b></label>
+                          <label><b> Very Severe</b></label>
+                          <div class="space-4"></div>
+                          <h4 align="center" id="IntensityRes" hidden></h4>
+                          <div class="space-10"></div>
+							 </div>
+							 
+							 <div>
+							<h4><b><u>Duration of morning stiffness</u></b></h4>
+							
+							 <label class="labelText">6. How long does your morning stiffness last from the time you wake up?</label>
+                          <div class="space-4"></div>
+                          <div class="radioFormat">
+                              <input type="radio" name="Durationofmorningstiffness" value=0 /> 0&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=1 /> 1&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=2 /> 2&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=3 /> 3&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=4 /> 4&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=5 /> 5&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=6 /> 6&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=7 /> 7&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=8 /> 8&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=9 /> 9&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input type="radio" name="Durationofmorningstiffness" value=10 /> 10&nbsp;&nbsp;
+                          </div>
+
+                          <label id="labelAlign"><b>None </b></label>
+                          <label><b> Very Severe</b></label>
+                          <div class="space-4"></div>
+                          <h4 align="center" id="DurationRes" hidden></h4>
+                          <div class="space-10"></div>
+							 </div>
+							 <div>
+							<div class="space-4"></div>
+							<div class="row">
+							<div class="col-sm-5">
+							</div>
+							<div  class="col-sm-7">
+							<input id="savebasdai" class="submitButton" type="submit" value="Save" Result style="color:white;"/>	
+							</div>
+							</div>
+							<div class="space-30"></div>
+							
+						
+						
+											
+							</div>
+																																															
+								<!-- /.col -->
+								
+						<!-- /.row -->
+						
+						</div>
+						</div>
+								<!-- PAGE CONTENT ENDS -->
+						
+					</div><!-- /.page-content -->
+				<!-- /.main-content -->

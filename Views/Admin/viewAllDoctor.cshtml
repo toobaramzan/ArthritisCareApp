@@ -1,0 +1,118 @@
+﻿
+@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/AdminScripts/mywebapp.ui.docSearch.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/searchAdditionlFunction.js")"></script>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            MyWebApp.UI.docSearch.readyMain();
+        });
+    </script>
+}
+
+
+<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a class="active" href="#">Home</a>
+							</li>
+						<li>
+								
+						View All Doctor
+							</li>
+							
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="sea">
+							<form class="form-search">
+									<input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+									<input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;"/>
+								
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+                <div class="page-content">
+<div class="space-10"></div>
+                   <!-- /.page-header -->
+                    <div class="container" id="homeBg">
+
+                        &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-md" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp; Doctor Record</b></h4>
+                        <br><br>
+                        <h3 align="center" id="noFound2">No Result Found!</h3>
+                        <div class="row" id="SearchRow2">
+                            <div class="space-8"></div>
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-11">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="searchTable" style="width:100%">
+                                        <thead id="tableHead">
+
+                                            <tr>
+                                                <th></th>
+                                                <th>Username</th>
+                                                <th>Firstname</th>
+                                                <th>Lastname</th>
+                                                <th>Category</th>
+                                                <th>Password</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="docbody"></tbody>
+
+                                    </table>
+                                </div>
+                                <div id="tableFoot" align="center"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+                <!-- /.col -->
+                <!-- /.row -->
+
+            </div>
+        </div>
+        <!-- PAGE CONTENT ENDS -->
+<script id="docrowtemplate" type="text/x-handlebars-template">
+
+    {{#each docList}}
+
+    <tr class="datarows" >
+        <td></td>
+        <td>
+            {{username}}
+        </td>
+        <td>
+            {{firstName}}
+        </td>
+        <td>
+            {{lastName}}
+        </td>
+        <td>
+            {{category}}
+        </td>
+        <td>
+            {{password}}
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    {{/each}}
+</script>

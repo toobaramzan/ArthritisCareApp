@@ -1,0 +1,512 @@
+﻿@model PUCIT.AIMRL.PRM.Entities.customEntities.PatAllHistory
+
+@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/mywebapp.ui.addNewVisit.js")"></script>
+    @*<link href="@Url.Content("~/Content/PrintCSS/printPatientVisit.css")" rel="stylesheet" type="text/css"  media="print"/>*@
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+           MyWebApp.UI.addNewVisit.readyMain();
+        });
+    </script>
+}			<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="~/Home/index">Home</a>
+                </li>
+                <li>
+                    <a href="~/Home/search">Search</a>
+                </li>
+                <li>
+                    Add Patient Visit
+                </li>
+
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="space-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+
+                &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-user-md" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Update Patient Visit</b></h4>
+                <div class="pull-right">
+                    <label hidden id="formTextDco">Patient ID:</label>
+                    <label hidden id="patId" style="color:darkblue"><u>@Model.temp.patientId</u></label>
+                </div>
+                <br><br>
+                <ul class="nav nav-tabs  tab-size-bigger">
+                    <li class="active">
+                        <a data-toggle="tab" href="#basic">
+                            <span class="bigger-110">Basic Info</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#meds">
+                            <span class="bigger-110">Medication</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#lab">
+                            <span class="bigger-110">Labs/Disease</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#assessment">
+                            <span class="bigger-110">Assessment</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="space-20"></div>
+                    <div id="basic" class="tab-pane fade in active">
+                        <div id="formAlign" class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="">
+                            </div>
+                            <div id="colAlign" class="col-sm-4">
+                                <label id="formTextDco">First Name</label>
+                                <div class="space-4"></div>
+                                <input type="text" placeholder="First Name" id="fnam" value="@Model.temp.firstName" readonly /><br><br>
+                            </div>
+                            <div class="col-sm-4">
+                                <label id="formTextDco">Last Name </label>
+                                <div class="space-4"></div>
+                                <input type="text" placeholder="Last Name" id="lnam" value="@Model.temp.lastName"  /><br><br>
+                            </div>
+                        </div>
+
+                        <div id="formAlign" class="row">
+                            <div class="col-sm-3"></div>
+                            <div id="colAlign" class="col-sm-4">
+                                <label id="formTextDco">Age</label>
+                                <div class="space-4"></div>
+                                <input type="text" placeholder="Age" id="age" value="@Model.temp.age"><br><br>
+                            </div>
+                            <div class="col-sm-4">
+                                <label id="formTextDco">Last F/U</label>
+                                <div class="space-4"></div>
+                                <input type="text" placeholder="Last F/U" id="lastFu" value="@Model.temp.lastfu" readonly ><br><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-9">
+                                <label id="formTextDco">Problem List </label>
+                                <div class="space-4"></div>
+                                <textarea id="problemList" rows="4" style="width:70%" ></textarea><br><br>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="meds" class="tab-pane fade">
+                        <div id="formAlign" class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-4">
+                                <label id="formTextDco">Medications</label>
+                                <div id="MedList2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lab" class="tab-pane fade">
+                        <div id="formAlign" class="row" style="padding-left:6em">
+
+                            <div class="col-sm-4">
+                                <label id="formTextDco">Labs</label>
+                                <div id="LabListUnary">
+
+                                </div>
+                                <div id="LabListBinary">
+
+                                </div>
+                            </div>
+
+                            <div id="colAlign" class="col-sm-4">
+                                <br>
+
+                                <label><b>Disease</b></label>
+                                <div id="diseaseList2"></div>
+                            </div>
+
+                            <div id="colAlign" class="col-sm-4">
+                                <div class="space-8"></div>
+                                <label id="formTextDco">Joint Count</label>
+                                <div class="space-4"></div>
+                                <label>TJC</label><br>
+                                <input type="number" min="0" id="tjc" value="@Model.patJointInfo.tjc" /><br><br>
+                                <label>SJC </label><br>
+                                <input type="number" min="0" id="sjc" value="@Model.patJointInfo.sjc"/><br><br>
+                                <label>VAS</label><br>
+                                <input type="number" min="0" id="vas" value="@Model.patJointInfo.uac"/><br><br>
+                                <label>DAS 28 </label><br>
+                                <input type="number" min="0" id="das28" value="@Model.patJointInfo.das28"/><br><br>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="assessment" class="tab-pane fade">
+                        <div id="formAlign" class="row">
+                            <div class="col-sm-3"></div>
+                            <div id="colAlign" class="col-sm-4">
+                                <label id="formTextDco">Systolic BP</label>
+                                <div class="space-4"></div>
+                                <input type="text" id="sysBp" value="@Model.temp.systolicBp" min="0" /><br><br>
+                            </div>
+                            <div class="col-sm-4">
+                                <label id="formTextDco">Diastolic BP </label>
+                                <div class="space-4"></div>
+                                <input type="text" id="diasysBp"  value="@Model.temp.diastolicBp" min="0"/><br><br>
+                            </div>
+                        </div>
+
+                        <div id="formAlign" class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-5">
+
+                                <label id="formTextDco">Weight</label>
+                                <div class="space-4"></div>
+                                <input type="text" id="weight" value="@Model.temp.weight" min="0" />&nbsp;
+                                <select id="unit">
+                                    <option value="kg">Kg</option>
+                                    <option value="ponds">Ponds</option>
+                                </select><br><br>
+                            </div>
+                        </div>
+                        <div id="formAlign" class="row">
+                            <div class="col-sm-3"></div>
+                            <div id="colAlign" class="col-sm-4">
+                                <label id="formTextDco">General </label>
+                                <div class="space-4"></div>
+                                <textarea id="gene" style="width:80%" rows="6">@Model.temp.general</textarea><br />
+                            </div>
+                            <div class="col-sm-4">
+                                <label id="formTextDco">Systemic </label>
+                                <div class="space-4"></div>
+                                <textarea id="syst" style="width:80%" rows="6">@Model.temp.systemic</textarea><br />
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-8">
+                                <label id="formTextDco">Assessment/Plan</label>
+                                <div class="space-4"></div>
+                                <textarea id="treatmentPlan" rows="6" style="width:80%">@Model.temp.treatmentPlan</textarea><br><br>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="space-10"></div>
+                <div class="row">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-8">
+
+                        <input type="submit" id="VisitUpdateBtn" value="Update" class="submitButton" style="color:white" /> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="submit" id="print" value="Print" class="submitButton" style="color:white" />
+                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="~/Home/testListView" style="color:blue;font-size:16px;"><b><u>Compute disease Activity Indicators<u></b></a>-->
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button id="disease2">Compute disease Activity Indicators</button>
+
+                    </div>
+                </div>
+                <label id="pid2" hidden>@Model.temp.patientId</label>
+                <label id="pVdate2" hidden>@Model.temp.visitDate</label>
+                <div class="space-30"></div>
+                
+            </div>
+
+
+        </div>
+
+        <!-- /.col -->
+        <!-- /.row -->
+
+    </div>
+</div>
+
+<div class="modal fade" id="visitModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:red">Warning</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:16px;" id="modelPara">Please Fill All Fileds With Valid Data!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PAGE CONTENT ENDS -->
+<!--HandleBar code to display List of medicines-->
+<script id="MedicineListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each commonMed}}
+    <div class="space-4"></div>
+    {{medName}}
+    <div class="space-4"></div>
+    <input type="text" name="{{medName}}" />
+    <div class="space-4"></div>
+    <fieldset id="{{medName}}">
+        <input type="radio" name="{{medName}}" value="Injection" /> Injection &nbsp;&nbsp;
+        <input type="radio" name="{{medName}}" value="Tablet" /> Tablet
+        <div class="space-6"></div>
+    </fieldset>
+    {{/each}}
+    {{#each visitMed}}
+    <div class="space-4"></div>
+    {{medName}}
+    <div class="space-4"></div>
+    <input type="text" name="{{medName}}" />
+    <div class="space-4"></div>
+    <fieldset id="{{medName}}">
+        <input type="radio" name="{{medName}}" value="Injection" /> Injection &nbsp;&nbsp;
+        <input type="radio" name="{{medName}}" value="Tablet" /> Tablet
+        <div class="space-6"></div>
+    </fieldset>
+    {{/each}}
+    <script type="text/javascript">
+        loadAllMeds();
+        FinalSolution();
+    </script>
+</script>
+
+<script id="UnaryLabListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each commonLab}}
+    {{#if_eq labType "Unary"}}
+    {{labName}}
+    <div class="space-4"></div>
+    <input type="text" name="{{labName}}" />
+    <div class="space-4"></div>
+    {{else}}
+    {{/if_eq}}
+    {{/each}}
+
+    {{#each visitLab}}
+    {{#if_eq labType "Unary"}}
+    {{labName}}
+    <div class="space-4"></div>
+    <input type="text" name="{{labName}}" />
+    <div class="space-4"></div>
+    {{else}}
+    {{/if_eq}}
+    {{/each}}
+    <script type="text/javascript">
+        loadAllUnaryLab();
+    </script>
+</script>
+
+<script id="BinaryLabListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each commonLab}}
+    {{#if_eq labType "Binary"}}
+    {{labName}}
+    <div class="space-4"></div>
+    <fieldset id="{{labName}}">
+        <input type="radio" name="{{labName}}" value="positive"> Positive &nbsp;&nbsp;
+        <input type="radio" name="{{labName}}" value="negative"> Negative
+    </fieldset>
+    <div class="space-4"></div>
+    <input type="text" name="{{labName}}" />
+    <div class="space-4"></div>
+    {{else}}
+    {{/if_eq}}
+    {{/each}}
+
+    {{#each visitLab}}
+    {{#if_eq labType "Binary"}}
+    {{labName}}
+    <div class="space-4"></div>
+    <fieldset id="{{labName}}">
+        <input type="radio" name="{{labName}}" value="positive"> Positive &nbsp;&nbsp;
+        <input type="radio" name="{{labName}}" value="negative"> Negative
+    </fieldset>
+    <div class="space-4"></div>
+    <input type="text" name="{{labName}}" />
+    <div class="space-4"></div>
+    {{else}}
+    {{/if_eq}}
+    {{/each}}
+
+    <script type="text/javascript">
+        loadAllBinaryLab();
+    </script>
+
+</script>
+
+<!--HandleBar code to display List of disease-->
+<script id="DiseaseListDisplaytemplate" type="text/x-handlebars-template">
+    {{#each disease}}
+    <div class="space-4"></div>
+    <input type="checkbox" name="{{diseaseName}}" value="{{diseaseName}}" />&nbsp; {{diseaseName}}
+    <label hidden id="{{diseaseName}}">{{Id}}</label>
+    {{/each}}
+    <script type="text/javascript">
+        loadAllDisease();
+    </script>
+</script>
+
+
+<!--Custom handleBar function to compare strings -->
+<script type="text/javascript">
+    Handlebars.registerHelper('if_eq', function (a, b, opts) {
+        if (a == b)
+            return opts.fn(this);
+        else
+            return opts.inverse(this);
+    });
+</script>
+
+<script>
+    function FinalSolution() {
+        @if(Model.temp.weightUnit.Equals("kg"))
+        {
+          <text>
+        $('select option[value="kg"]').attr("selected", true);
+        </text>
+        }
+        else if(Model.temp.weightUnit.Equals("Ponds"))
+        {
+            <text>
+        $('select option[value="Ponds"]').attr("selected", true);
+        </text>
+        }
+    }
+</script>
+
+
+<script>
+
+    function loadAllUnaryLab()
+    {
+        $('#LabListUnary input:text').each(function (i) {
+            var labV = $(this).val();
+            var labN = $(this).attr('name');
+
+            @if (Model.patLabInfo != null)
+            {
+            for (int i = 0; i < Model.patLabInfo.Count; i++)
+            {
+                <text>
+            var ros = '@Model.patLabInfo[i].labName';
+            var v = '@Model.patLabInfo[i].labData';
+
+                if(labN === ros)
+                {
+                    var r = labN.replace(/([ !#$%^&*()+=\[\]\\';,./{}|":<>?~_-])/g, "\\$1");
+                    $('input[name$=' + r + ']').val(v);
+                }
+                </text>
+            }
+                }
+            });
+    }
+</script>
+
+<script>
+
+    function loadAllBinaryLab()
+    {
+        $('#LabListBinary input:text').each(function (i) {
+
+            var labN = $(this).attr('name');
+             @if (Model.patLabInfo != null)
+             {
+            for (int i = 0; i < Model.patLabInfo.Count; i++)
+            {
+                <text>
+            var ros = '@Model.patLabInfo[i].labName';
+            var v = '@Model.patLabInfo[i].labData';
+            var btn='@Model.patLabInfo[i].labResult';
+                if(labN === ros)
+                {
+                    var r = labN.replace(/([ !#$%^&*()+=\[\]\\';,./{}|":<>?~_-])/g, "\\$1");
+                    $('input[name="' + r + '"][value="' + btn + '"]').prop('checked', true);
+                    $('input[type="text"][name$=' + r + ']').val(v);
+                }
+                </text>
+            }
+                 }
+             });
+    }
+</script>
+
+<script>
+    function loadAllDisease()
+    {
+        $('#diseaseList2 input').each(function (i) {
+            var r = $(this).attr('name');
+             @if (Model.patDiseaseInfo != null)
+             {
+                 for (int i = 0; i < Model.patDiseaseInfo.Count; i++)
+                 {
+                <text>
+            var ros = '@Model.patDiseaseInfo[i].pmh';
+                if(r===ros)
+                {
+                    var n = r.replace(/([ !#$%^*()+=\[\]\\';,./{}|":<>?~_-])/g, "\\$1");
+                    $('input:checkbox[name=' + n + ']').attr('checked', true);
+                    var dummy=r.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+                    $("#" + dummy).text(@Model.patDiseaseInfo[i].id);
+                }
+                </text>
+                     }
+                 }
+             });
+    }
+</script>
+
+<script>
+
+    function loadAllMeds()
+    {
+        $('#MedList2 input:text').each(function (i) {
+
+            var labN = $(this).attr('name');
+             @if (Model.patMedInfo != null)
+             {
+                 for (int i = 0; i < Model.patMedInfo.Count; i++)
+                 {
+                <text>
+            var ros = '@Model.patMedInfo[i].medName';
+            var v = '@Model.patMedInfo[i].medDose';
+            var btn='@Model.patMedInfo[i].medType';
+                if(labN === ros)
+                {
+                    var r = labN.replace(/([ !#$%^&*()+=\[\]\\';,./{}|":<>?~_-])/g, "\\$1");
+                    $('input[name="' + r + '"][value="' + btn + '"]').prop('checked', true);
+                    $('input[type="text"][name$=' + r + ']').val(v);
+                }
+                </text>
+                     }
+                 }
+             });
+    }
+</script>

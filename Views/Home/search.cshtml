@@ -1,0 +1,237 @@
+﻿@section Header
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/mywebapp.ui.search.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/searchAdditionlFunction.js")"></script>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            MyWebApp.UI.search.readyMain();
+        });
+    </script>
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+
+                    Advance Search
+                </li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="sea">
+                <form class="form-search">
+                    <input type="text" placeholder="Search Patient..." class="nav-search-input" id="nav-search-input" />
+                    <input type="submit" id="searchBtn" class="fa" style="font-size:18px;color:#00334d" value="&#xf002;" />
+
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+        <div class="page-content">
+            <div class="space-10"></div>
+            <!-- /.page-header -->
+            <div class="container" id="homeBg">
+                <div id="serchBodycontent">
+                    &nbsp; &nbsp;&nbsp;<h4 class="patientTclass"><b class="fa fa-search" style="font-size:28px;color:#00334d"></b>&nbsp;&nbsp;&nbsp;Search Patient's History </b></h4>
+                    <div class="space-10"></div>
+                    <div class="row center">
+                        <h5>Search using different paramters.</h5>
+                    </div>
+                    <div class="space-10"></div>
+
+
+                    <div id="searchformAlign" class="row">
+
+                        <div class="">
+                        </div>
+                        <div id="colAlign" class="col-sm-4">
+                            <label id="formTextDco">First Name</label>
+                            <div class="space-4"></div>
+                            <input type="text" id="fName" placeholder="First Name"><br><br>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="formTextDco">Last Name </label>
+                            <div class="space-4"></div>
+                            <input type="text" id="lname" placeholder="Last Name"><br><br>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="formTextDco">Area </label>
+                            <div class="space-4"></div>
+                            <input type="text" id="area" placeholder="Area/City"><br><br>
+                        </div>
+
+                    </div>
+
+                    <div id="searchformAlign" class="row">
+
+                        <div class="">
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="formTextDco">Mobile Number </label>
+                            <div class="space-4"></div>
+                            <input type="text" id="mobile" placeholder="Mobile Number"><br><br>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <label id="formTextDco">Visit Date </label>
+                            <div class="space-4"></div>
+                            <input class="date-picker" id="visitDate" type="text" placeholder="YYYY-MM-DD" data-date-format="dd-mm-yyyy" />
+                            <br><br>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row" align="center">
+                    <input id="searchResult" class="submitButton" type="submit" value="Search" style="color:white;" />
+                </div>
+
+
+                <div class="space-20"></div>
+                <h3 align="center" id="noFound">No Result Found!</h3>
+                <div class="row" id="SearchRow">
+
+                    <p class="" id="rowOrder">
+                        &nbsp;&nbsp;&nbsp;Search Result
+                        @*<select id="dropdown" class="pull-right" onchange="orderBySearchfilter()" >
+                            <option value="Visit Date">Visit Date (Desc)
+                            <option value="First Name">First Name
+                            <option value="Last Name">Last Name
+                            <option value="Area">Area
+                            <option value="Mobile Number">Mobile Number
+                        </select>*@
+                        @*<label class="pull-right" id="rowOrder">Order By :</label>*@
+                    </p>
+
+                    <div class="space-8"></div>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="searchTable" style="width:100%" >
+                                <thead id="tableHead">
+                                   
+                                        <tr>
+                                            <th></th>
+                                            <th>FirstName</th>
+                                            <th>LastName</th>
+                                            <th>Mobile Number</th>
+                                            <th>Area</th>
+                                            <th>VisitDate</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    
+                                </thead>
+
+                                <tbody id="patientbody">
+
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                        <div id="tableFoot" align="center"></div>
+                    
+                    </div>
+
+                    </div>
+                </div>
+
+
+                <div class="space-30"></div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- /.col -->
+        <!-- /.row -->
+
+    </div>
+</div>
+
+<div class="modal fade" id="searchModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:red">Warning</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:16px;" id="modelPara">Please Enter search criteria!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->
+
+<script id="patientrowtemplate" type="text/x-handlebars-template">
+
+    {{#each PatientList}}
+    
+    <tr class="datarows" onmouseover="this.style.cursor = 'pointer'" onclick="setOnRowClickListener('{{patientId}}','{{{splitTitle visitDate}}}','{{firstName}}','{{lastName}}')">
+        <td onclick='event.stopPropagation();return false;'>
+            <button style="background:transparent;border:0px"  onclick="UpdateFunction('{{patientId}}','{{{splitTitle visitDate}}}')"> <i   class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+        </td>
+        <td>
+            {{firstName}}
+        </td>
+        <td>
+            {{lastName}}
+        </td>
+        <td>
+            {{phoneNumber}}
+        </td>
+        <td>
+            {{city}}
+        </td>
+        <td>
+            {{{splitTitle visitDate}}}
+        </td>
+        <td onclick='event.stopPropagation();return false;'>
+            <label onmouseover="this.style.cursor = 'pointer'"  onclick="RedirectToLink('{{patientId}}','{{{splitTitle visitDate}}}','{{firstName}}','{{lastName}}')"> <u style="color:dodgerblue">Add New Visit</u></label>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+
+<script>
+    Handlebars.registerHelper('splitTitle', function (title) {
+        var t = title.split("T");
+        return  t[0];
+    });
+
+</script>
+<script>
+	//datepicker plugin
+    //link
+
+    $('#visitDate').datepicker({
+        datepicker: true,
+        autoclose: true,
+        todayHighlight: true,
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'yy-mm-dd'
+    })
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+
+    //$("#visitDate").val($.datepicker.formatDate("dd-mm-yy", new Date()));
+
+</script>

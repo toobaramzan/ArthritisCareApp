@@ -1,0 +1,171 @@
+﻿@{
+    Layout = "~/Views/Shared/__SamplesLayout.cshtml";
+   
+}
+
+@{
+    ViewBag.Title = "Sample Student";
+}
+
+
+@section Header
+{ 
+    <script type="text/javascript" src="@Url.Content("~/Scripts/mywebapp/samples/mywebapp.ui.samplestudent.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-plugins/tablesorter/jquery.tablesorter.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-plugins/tablesorter/jquery.filtertable.min.js")"></script>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            MyWebApp.UI.SampleStudent.readyMain();
+        });
+    </script> 
+
+}
+
+
+
+<div id="divPageHeading" class="page-heading  row">
+    <h1>
+        <span id="spHeadingIcon" class="pageicon-home"></span>
+        <span id="pageheading">Student Registration</span>
+        <span class="dataCount"></span></h1>
+</div>
+
+<div id="divLookupBarImg" class="expandable">
+</div>
+
+
+<div id ="body">
+    <div class="row"> 
+        <div class="col col_3">
+            <label>Search By:</label>
+      
+            <input type="button" class=" btn blue" value="Search" id="btnTopSearch" /> 
+        </div>
+        <input id="txtTopSearch" value="" title="Search" type="text" maxlength="100" />
+    </div>
+    <div class="row">
+        <input id="txtStudentId" value="0"   type="hidden" />
+        <div class="col col_3">
+            <label>First Name:</label> 
+        </div>
+        <input id="txtFirstName" value="" title="First Date" type="text" maxlength="100"/> 
+    </div>
+    <div class="row">
+        <div class="col col_3">
+            <label>Last Name:</label>
+        </div>
+        <input id="txtLastName" value="" title="Last Date" type="text" maxlength="100" />
+    </div>
+    <div class="row">
+        <div class="col col_3">
+            <label>Gender:</label>
+        </div>
+        <input type="radio" name="rdbTradeSwap" value="M" id="rdbMale" />Male
+        <input type="radio" name="rdbTradeSwap" value="F" id="rdbFemale" />Female
+    </div>
+    <div class="row">
+        <div class="col col_3">
+            <label>Date of Birth:</label>
+        </div>
+        <input id="txtDateOfBirth" class="DatePicker" value="" title="Date of Birth" type="text" /> 
+    </div> 
+    <div class="row">
+        <div class="col col_3">
+            <label>Education:</label>
+        </div>
+        <select id="ddlEducation">
+            <option value="1">Ph.D.</option>
+            <option value="2">Masters</option>
+            <option value="3">Bachelors</option>
+            <option value="4">Associate</option>
+            <option value="5">High School</option>
+        </select>
+    </div>
+
+    <div>
+        <input id="btnSave" class="btn blue" type="button" value="Save" />
+        <input id="btnCancel" class="btn blue" type="button" value="Cancel" />
+        <input id="btnBotSearch" class="btn blue" type="button" value="Search" />
+    </div>
+
+    <div id="alldatacontainer">
+        <table id="tblStudents" width="60%" border="1" cellspacing="0" cellpadding="0" class="tablesorter tblData">
+            <thead>
+                <tr>
+                    <th align="middle" valign="middle" scope="col"">Student Id
+                    </th> 
+                    <th align="middle" valign="middle" scope="col">First Name
+                    </th>
+                    <th align="middle" valign="middle" scope="col">Last Name
+                    </th>
+                    <th align="middle" valign="middle" scope="col">Date Of Birth
+                    </th> 
+                    <th align="middle" valign="middle" scope="col">Status
+                    </th>
+                    <th scope="col" width="5%">Edit
+                    </th>
+                    <th scope="col" width="5%">Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="studentbody">
+            </tbody>
+        </table>
+    </div>
+    <div id="divStudentDeactivatePopUp" class="window" style="display: none">
+        <div class="popHead">
+            <h2>Confirmation</h2>
+        </div>
+        <div class="popContent">
+            <div class="msg">
+                <span>Are you sure you want to deactivate this student?
+                </span>
+            </div>
+            <div class="Btns">
+                <input type="button" class="Confirm close btn blue" value="Confirm" id="btnPopConfirm" />
+                <input type="button" class="Cancel close btn grey" value="Close" id="btnPopCancel" />
+                <input id="txtPopStudentId" value="0" type="hidden" />
+            </div>
+        </div>
+    </div>
+</div>
+@*</fieldset>*@
+
+<script id="studentrowtemplate" type="text/x-handlebars-template">
+    {{#each StudentList}}
+    <tr class = "datarows"> 
+        <td align="right">
+            <div class="col col_20">
+                <span class="studentids">{{StudentId}}</span>
+                @*<input id="edittxtStudents_{{StudentId}}" type="text" maxlength="50" class="Student" style="width: 800px;"/>*@
+            </div>
+        </td>
+        <td>
+            <span class="fname">{{FirstName}}</span>
+        </td> 
+        <td>
+            <span class="lname">{{LastName}}</span>
+        </td> 
+        <td align="right" valign="middle">
+            <span class="dob">{{DateOfBirth}}</span>
+        </td>  
+        <td align="center" valign="middle"> 
+            <input id="isactive" type="checkbox" value = "{{IsActive}}" class="iactive"}/>
+        </td> 
+        <td align="center" valign="middle">
+           <div class="tblActions">
+                <a href="#" align="left" class="edit" title="Click to edit"></a>
+                </div>
+          
+        </td>
+        <td align="center" valign="middle">
+           <div class="tblActions">
+               <a href="#"  class="delete" title="Click to deactivate">Delete</a>           
+            </div>
+    </tr>
+    {{/each}}   
+</script>
